@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import React, { Suspense } from 'react';
 import { render } from '@testing-library/react'
 import { RecoilRoot } from 'recoil';
