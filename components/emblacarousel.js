@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Image from 'next/image';
 import PropTypes from 'prop-types';
-import { PrevButton, NextButton } from './emblacarouselbuttons';
 import { useEmblaCarousel } from 'embla-carousel/react';
+import { PrevButton, NextButton } from './emblacarouselbuttons';
+import { Slide } from "./emblacarouselslide";
 import { mediaByIndex } from '../public';
 
 const EmblaCarousel = ({ slides }) => {
+  const [slidesInView, setSlidesInView] = useState([]);
   const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
@@ -18,28 +19,38 @@ const EmblaCarousel = ({ slides }) => {
     setNextBtnEnabled(embla.canScrollNext());
   }, [embla]);
 
+  const findSlidesInView = useCallback(() => {
+    if (!embla) return;
+
+    setSlidesInView((slidesInView) => {
+      if (slidesInView.length === embla.slideNodes().length) {
+        embla.off("select", findSlidesInView);
+      }
+      const inView = embla
+        .slidesInView(true)
+        .filter((index) => slidesInView.indexOf(index) === -1);
+      return slidesInView.concat(inView);
+    });
+  }, [embla, setSlidesInView]);
+
   useEffect(() => {
     if (!embla) return;
-    embla.on('select', onSelect);
     onSelect();
-  }, [embla, onSelect]);
+    findSlidesInView();
+    embla.on("select", onSelect);
+    embla.on("select", findSlidesInView);
+  }, [embla, onSelect, findSlidesInView]);
 
   return (
-    <div className='embla'>
-      <div className='embla__viewport' ref={viewportRef}>
-        <div className='embla__container'>
+    <div className="embla">
+      <div className="embla__viewport" ref={viewportRef}>
+        <div className="embla__container">
           {slides.map((index) => (
-            <div className='embla__slide' key={index}>
-              <div className='embla__slide__inner'>
-                <Image
-                  className='embla__slide__img'
-                  src={mediaByIndex(index)}
-                  alt='A cool something.'
-                  width='670'
-                  height='400'
-                />
-              </div>
-            </div>
+            <Slide
+              key={index}
+              imgSrc={mediaByIndex(index)}
+              inView={slidesInView.indexOf(index) > -1}
+            />
           ))}
         </div>
       </div>
@@ -50,7 +61,7 @@ const EmblaCarousel = ({ slides }) => {
 };
 
 EmblaCarousel.propTypes = {
-  slides: PropTypes.object
+  slides: PropTypes.array
 };
 
 export default EmblaCarousel;
