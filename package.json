@@ -5,14 +5,15 @@
   "scripts": {
     "dev": "next dev -p 3001",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "build": "yarn && next build",
     "start": "next start -p ${PORT:=3000}",
     "test": "jest",
     "test:ci": "jest --ci",
     "test:snapshot": "jest --updateSnapshot",
-    "docker-build": "docker build -t nextjs-docker .",
-    "docker-run": "docker run --name nextjs-docker -p 3000:3000 nextjs-docker",
-    "docker-clean": "docker rm -f nextjs-docker"
+    "docker:build": "docker build -t nextjs-docker .",
+    "docker:run": "docker run --name nextjs-docker -p 3000:3000 nextjs-docker",
+    "docker:clean": "docker rm -f nextjs-docker"
   },
   "dependencies": {
     "@react-aria/ssr": "^3.1.0",

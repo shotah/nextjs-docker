@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useEmblaCarousel } from 'embla-carousel/react';
 import { PrevButton, NextButton } from './emblacarouselbuttons';
-import { Slide } from "./emblacarouselslide";
+import { Slide } from './emblacarouselslide';
 import { mediaByIndex } from '../public';
 
 const EmblaCarousel = ({ slides }) => {
@@ -24,7 +24,7 @@ const EmblaCarousel = ({ slides }) => {
 
     setSlidesInView((slidesInView) => {
       if (slidesInView.length === embla.slideNodes().length) {
-        embla.off("select", findSlidesInView);
+        embla.off('select', findSlidesInView);
       }
       const inView = embla
         .slidesInView(true)
@@ -37,8 +37,8 @@ const EmblaCarousel = ({ slides }) => {
     if (!embla) return;
     onSelect();
     findSlidesInView();
-    embla.on("select", onSelect);
-    embla.on("select", findSlidesInView);
+    embla.on('select', onSelect);
+    embla.on('select', findSlidesInView);
   }, [embla, onSelect, findSlidesInView]);
 
   return (

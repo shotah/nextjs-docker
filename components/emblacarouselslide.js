@@ -1,7 +1,7 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
-const PLACEHOLDER_SRC = `data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D`;
+const PLACEHOLDER_SRC = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D';
 
 export const Slide = ({ imgSrc, inView }) => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -11,7 +11,7 @@ export const Slide = ({ imgSrc, inView }) => {
   }, [inView, setHasLoaded]);
 
   return (
-    <div className={`embla__slide ${hasLoaded ? "has-loaded" : ""}`}>
+    <div className={`embla__slide ${hasLoaded ? 'has-loaded' : ''}`}>
       <div className="embla__slide__inner">
         <Image
           className="embla__slide__img"

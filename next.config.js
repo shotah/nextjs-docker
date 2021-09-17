@@ -3,14 +3,6 @@
 // You can choose which headers to add to the list
 // after learning more below.
 const securityHeaders = [
-  {
-    key: 'X-DNS-Prefetch-Control',
-    value: 'on'
-  },
-  {
-    key: 'Strict-Transport-Security',
-    value: 'max-age=63072000; includeSubDomains; preload'
-  },
 ]
 
 module.exports = {
@@ -30,6 +22,10 @@ module.exports = {
   domains: [
     {
       domain: 'bldhosting.com',
+      defaultLocale: 'en-US',
+    },
+    {
+      domain: 'localhost',
       defaultLocale: 'en-US',
     },
   ],

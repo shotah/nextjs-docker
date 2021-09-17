@@ -1,8 +1,20 @@
-import React from 'react'
-import renderer from 'react-test-renderer'
-import Index from '../pages/index'
+/**
+ * @jest-environment jsdom
+ */
 
-it('renders homepage unchanged', () => {
-  const tree = renderer.create(<Index />).toJSON()
-  expect(tree).toMatchSnapshot()
+import React, { Suspense } from 'react';
+import { render } from '@testing-library/react'
+import { RecoilRoot } from 'recoil';
+import Home from '../pages/index';
+
+it('renders homepage unchanged', async() => { 
+  const { asFragment } = render(
+    <RecoilRoot>
+      <Suspense fallback={<div>loading...</div>}>
+        <Home />
+      </Suspense>
+    </RecoilRoot>
+  );
+  expect(asFragment()).toMatchSnapshot();
 })
+
