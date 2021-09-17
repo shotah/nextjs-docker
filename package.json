@@ -15,12 +15,15 @@
     "docker-clean": "docker rm -f nextjs-docker"
   },
   "dependencies": {
+    "@react-aria/ssr": "^3.1.0",
     "bootstrap": "^5.1.0",
+    "embla-carousel": "^4.5.3",
     "next": "latest",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.6",
     "react-dom": "^17.0.2",
+    "react-lazyload": "^3.2.0",
     "recoil": "^0.4.1",
     "recoil-persist": "^3.0.0"
   },

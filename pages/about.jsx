@@ -1,8 +1,8 @@
 import React from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
 import { Container, Breadcrumb, Button } from 'react-bootstrap';
 
-function About() {
+function About () {
   return (
     <Container>
       <div>
@@ -12,16 +12,16 @@ function About() {
         </Breadcrumb>
       <div>About
       <Link href="/" passHref>
-        <Button variant="primary">
-          back 
-          {"\n"}
+        <Button variant='primary'>
+          back
+          {'\n'}
           &larr;
         </Button>
       </Link>
       </div>
     </div>
   </Container>
-  )
+  );
 }
 
-export default About
+export default About;
