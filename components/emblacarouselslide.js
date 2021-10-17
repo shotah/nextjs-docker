@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
-const PLACEHOLDER_SRC = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D';
+const PLACEHOLDER_SRC =
+  'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D';
 
 export const Slide = ({ imgSrc, inView }) => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -18,7 +19,7 @@ export const Slide = ({ imgSrc, inView }) => {
           src={inView ? imgSrc : PLACEHOLDER_SRC}
           onLoad={setLoaded}
           alt="A cool something."
-          layout='fill'
+          layout="fill"
         />
       </div>
     </div>
@@ -26,6 +27,6 @@ export const Slide = ({ imgSrc, inView }) => {
 };
 
 Slide.propTypes = {
-  imgSrc: PropTypes.object,
-  inView: PropTypes.func
+  imgSrc: PropTypes.string,
+  inView: PropTypes.bool
 };

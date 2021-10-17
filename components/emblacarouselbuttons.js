@@ -14,7 +14,7 @@ export const PrevButton = ({ enabled, onClick }) => (
 );
 
 PrevButton.propTypes = {
-  enabled: PropTypes.object,
+  enabled: PropTypes.bool,
   onClick: PropTypes.func
 };
 
@@ -31,6 +31,6 @@ export const NextButton = ({ enabled, onClick }) => (
 );
 
 NextButton.propTypes = {
-  enabled: PropTypes.object,
+  enabled: PropTypes.bool,
   onClick: PropTypes.func
 };

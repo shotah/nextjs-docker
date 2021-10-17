@@ -38,4 +38,4 @@ EXPOSE 3000
 # Uncomment the following line in case you want to disable telemetry.
 ENV NEXT_TELEMETRY_DISABLED 1
 
-CMD ["yarn --prod", "start"]
+CMD ["yarn", "start"]

@@ -15,9 +15,6 @@ exports[`renders homepage unchanged 1`] = `
          Get started! 
       </p>
       <div>
-        loading...
-      </div>
-      <div>
         <h1>
           Count: 
           <span>
