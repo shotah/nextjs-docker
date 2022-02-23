@@ -1,16 +1,13 @@
-import React, { Suspense } from 'react';
-import { render } from '@testing-library/react'
+import React from 'react';
+import { render } from '@testing-library/react';
 import { RecoilRoot } from 'recoil';
 import Home from '../pages/index';
 
-it('renders homepage unchanged', async() => { 
+it('renders homepage unchanged', async () => {
   const { asFragment } = render(
     <RecoilRoot>
-      <Suspense fallback={<div>loading...</div>}>
-        <Home />
-      </Suspense>
+      <Home />
     </RecoilRoot>
   );
   expect(asFragment()).toMatchSnapshot();
-})
-
+});
